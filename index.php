@@ -33,14 +33,25 @@ require_once 'class.php';
 <article>
 <?php
 $products = new ShopProductsWrite();
-$products->write(
-        new ShopProducts(
+$products->addProducts(
+        new BookProducts(
             'Программирование',
             'Max',
             'Smit',
-            150
+            150,
+            500
         )
 );
+$products->addProducts(
+    new DvdProducts(
+        'Классика',
+        'Max',
+        'Best',
+        150,
+        72
+    )
+);
+$products->write();
 ?>
 </article>
 <footer>

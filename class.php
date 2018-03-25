@@ -15,4 +15,6 @@
  * Time: 22:35
  */
 require_once 'class/ShopProducts.php';
+require_once 'class/BookProducts.php';
+require_once 'class/DvdProducts.php';
 require_once 'class/ShopProductsWrite.php';

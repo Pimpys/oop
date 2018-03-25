@@ -14,14 +14,28 @@
  * Date: 24.03.2018
  * Time: 23:25
  */
-/* @var $shopProducts ShopProducts*/
+
 class ShopProductsWrite
 {
     /**
+     * @var array
+     */
+    private $products = [];
+
+    /**
      * @param ShopProducts $shopProducts
      */
-    public function write(ShopProducts $shopProducts)
+    public function addProducts(ShopProducts $shopProducts)
     {
-        print $shopProducts->getProducer();
+        $this->products[] = $shopProducts;
+    }
+    /**
+     * @param ShopProducts $shopProducts
+     */
+    public function write()
+    {
+        foreach ($this->products as $shopProducts){
+            print $shopProducts->getSummaryLine() . '<hr/>';
+        }
     }
 }

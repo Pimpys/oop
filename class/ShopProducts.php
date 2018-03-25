@@ -17,23 +17,28 @@
 
 class ShopProducts
 {
-    /* public protected private*/
     /**
      * @var string
      */
-    public $title;
+    private $title;
     /**
      * @var string
      */
-    public $name = 'Имя автора';
+    private $name;
     /**
      * @var string
      */
-    public $firstName = 'Его фамилия';
+    private $firstName;
     /**
      * @var int
      */
-    public $price = 10;
+    private $discount = 5;
+
+    /**
+     * @var int
+     */
+    protected $price;
+
 
     /**
      * ShopProducts constructor.
@@ -42,7 +47,7 @@ class ShopProducts
      * @param $firsName
      * @param int $price
      */
-    public function __construct($title, $name, $firsName, $price = 0)
+    public function __construct($title, $name, $firsName, $price)
     {
         $this->title = $title;
         $this->name = $name;
@@ -55,6 +60,62 @@ class ShopProducts
      */
     public function getProducer(): string
     {
-        return 'Название книги: <b>' . $this->title . '</b> Автор: <b>' . $this->name . ' - ' . $this->firstName . '</b> Цена: ' . $this->price;
+        return $this->name . ' - ' . $this->firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSummaryLine(): string
+    {
+        return $this->getTitle() . ' (<b>' . $this->getProducer() . '</b>) ';
+    }
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price - $this->discount;
+    }
+
+    /**
+     * @param $int
+     * @return int
+     */
+    public function setDiscount($int): int
+    {
+        $this->discount = $int;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDiscount(): int
+    {
+        return $this->discount;
     }
 }
